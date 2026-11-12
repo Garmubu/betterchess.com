@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!-- Development page: open it directly in a browser, no build needed.
+     `node build.js` inlines every file below into the single ../index.html. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>betterchess</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Pixelify+Sans:wght@400..700&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="cave" aria-hidden="true"></canvas>
+<div class="app">
+  <header class="top">
+    <h1>betterchess</h1>
+    <span class="row">
+      <select id="langSel" class="btn sm"></select>
+      <button class="btn sm" id="sndBtn" data-act="sound" aria-pressed="true"></button>
+      <span class="chip warn" id="engChip">…</span>
+    </span>
+  </header>
+  <main id="view"></main>
+</div>
+<nav class="nav"><div class="nav-in">
+  <button data-act="nav" data-view="play"><svg viewBox="0 0 11 11" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true"><rect x="5" y="0" width="1" height="3"/><rect x="4" y="1" width="3" height="1"/><rect x="3" y="3" width="5" height="1"/><rect x="2" y="4" width="7" height="3"/><rect x="3" y="7" width="5" height="1"/><rect x="2" y="8" width="7" height="1"/><rect x="1" y="9" width="9" height="2"/></svg><span></span></button>
+  <button data-act="nav" data-view="openings"><svg viewBox="0 0 11 11" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true"><rect x="1" y="1" width="4" height="8"/><rect x="6" y="1" width="4" height="8"/><rect x="5" y="2" width="1" height="8"/><rect x="1" y="9" width="9" height="1"/></svg><span></span></button>
+  <button data-act="nav" data-view="tactics"><svg viewBox="0 0 11 11" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true"><rect x="1" y="1" width="2" height="2"/><rect x="4" y="1" width="2" height="2"/><rect x="7" y="1" width="2" height="2"/><rect x="2" y="4" width="7" height="1"/><rect x="5" y="4" width="1" height="6"/><rect x="3" y="9" width="5" height="1"/><rect x="1" y="10" width="9" height="1"/></svg><span></span></button>
+  <button data-act="nav" data-view="profile"><svg viewBox="0 0 11 11" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true"><rect x="1" y="8" width="2" height="2"/><rect x="4" y="5" width="2" height="5"/><rect x="7" y="2" width="2" height="8"/><rect x="0" y="10" width="11" height="1"/></svg><span></span></button>
+</div></nav>
+<div id="toast" class="toast" role="status" hidden></div>
+
+<!-- chess rules and data -->
+<script src="chess/core.js"></script>
+<script src="data/openings.js"></script>
+<script src="data/themes.js"></script>
+<script src="data/tactics.js"></script>
+<!-- translations -->
+<script src="i18n/i18n.js"></script>
+<script src="i18n/fr.js"></script>
+<script src="i18n/en.js"></script>
+<script src="i18n/es.js"></script>
+<script src="i18n/de.js"></script>
+<script src="i18n/it.js"></script>
+<!-- interface -->
+<script src="ui/util.js"></script>
+<script src="ui/pieces.js"></script>
+<script src="ui/sound.js"></script>
+<script src="ui/store.js"></script>
+<script src="ui/engine.js"></script>
+<script src="ui/coach.js"></script>
+<script src="ui/book.js"></script>
+<script src="ui/board.js"></script>
+<script src="ui/learn.js"></script>
+<script src="ui/game.js"></script>
+<script src="ui/trainer.js"></script>
+<script src="ui/openings.js"></script>
+<script src="ui/tactics.js"></script>
+<script src="ui/profile.js"></script>
+<script src="ui/app.js"></script>
+<script src="ui/backdrop.js"></script>
+<script src="ui/main.js"></script>
+</body>
+</html>

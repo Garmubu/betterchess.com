@@ -1,0 +1,240 @@
+/* Pixel-art pieces, 32x32, drawn as SVG and injected as CSS classes (.pc.wn = white knight…).
+   Each letter is one pixel: X outline, h highlight, o body, s shade, d detail, . transparent.
+   Edit the drawings right here: each string is one row of pixels. */
+const PIECES = {
+  p: [
+    "................................",
+    "................................",
+    "................................",
+    "................................",
+    "..............XXXX..............",
+    "............XXhhhsXX............",
+    "...........XhhoooossX...........",
+    "...........XhooooossX...........",
+    "..........XhooooooossX..........",
+    "..........XhooooooossX..........",
+    "..........XhooooooossX..........",
+    "..........XhooooooossX..........",
+    "...........XhooooossX...........",
+    "...........XhooooossX...........",
+    "............XhooossX............",
+    "...........XsooooossX...........",
+    "...........XXooooosXX...........",
+    ".............XhossX.............",
+    "............XhooossX............",
+    "............XhooossX............",
+    "...........XhooooossX...........",
+    "..........XhooooooossX..........",
+    "..........XhooooooossX..........",
+    "........XXooooooooooosXX........",
+    "........XhooooooooooossX........",
+    "........XhooooooooooossX........",
+    "......XXddddddddddddddddXX......",
+    "......XhooooooooooooooossX......",
+    "......XssssssssssssssssssX......",
+    "......XXXXXXXXXXXXXXXXXXXX......",
+    "................................",
+    "................................"
+  ],
+  r: [
+    "................................",
+    "................................",
+    "................................",
+    ".......XXXXX.XXXXXX.XXXXX.......",
+    ".......XhssX.XhhssX.XhssX.......",
+    ".......XhssX.XhossX.XhssX.......",
+    ".......XhssX.XhossX.XhssX.......",
+    ".......XhoooXooooooXoossX.......",
+    ".......XhooohoooooohoossX.......",
+    ".......XhooooooooooooossX.......",
+    ".......XssoooooooooooossX.......",
+    ".......XXXooooooooooooXXX.......",
+    "..........XddddddddddX..........",
+    "..........XhooooooossX..........",
+    "..........XhooooooossX..........",
+    "..........XhooooooossX..........",
+    "..........XhodoooodssX..........",
+    "..........XhodoooodssX..........",
+    ".........XhoodoooodossX.........",
+    ".........XhoodoooodossX.........",
+    ".........XhooooooooossX.........",
+    ".........XhooooooooossX.........",
+    ".........XhooooooooossX.........",
+    "........XhooooooooooossX........",
+    "........XhooooooooooossX........",
+    "........XhooooooooooossX........",
+    "......XXddddddddddddddddXX......",
+    "......XhooooooooooooooossX......",
+    "......XssssssssssssssssssX......",
+    "......XXXXXXXXXXXXXXXXXXXX......",
+    "................................",
+    "................................"
+  ],
+  b: [
+    "................................",
+    "...............XX...............",
+    "..............XssX..............",
+    "..............XssX..............",
+    "...............XX...............",
+    "..............XssX..............",
+    "..............XssX..............",
+    "............XXooosXX............",
+    "...........XhhooodssX...........",
+    "..........XhoooodoossX..........",
+    "..........XhoooodoossX..........",
+    "..........XhooodooossX..........",
+    "..........XhoodoooossX..........",
+    "..........XhooooooossX..........",
+    "...........XhooooossX...........",
+    "...........XhooooossX...........",
+    "...........XhooooossX...........",
+    "..........XddddddddddX..........",
+    "..........XXXooooooXXX..........",
+    ".............XhossX.............",
+    "............XhooossX............",
+    "...........XhooooossX...........",
+    "..........XhooooooossX..........",
+    "........XXhoooooooooosXX........",
+    "........XhooooooooooossX........",
+    "........XhooooooooooossX........",
+    "......XXddddddddddddddddXX......",
+    "......XhooooooooooooooossX......",
+    "......XssssssssssssssssssX......",
+    "......XXXXXXXXXXXXXXXXXXXX......",
+    "................................",
+    "................................"
+  ],
+  q: [
+    "................................",
+    "...............XX...............",
+    "..........X...XssX..X...........",
+    ".....X...XsX..XssX.XsX...X......",
+    "....XsX...X....XX...X...XsX.....",
+    ".....X....XX...XX...XX...X......",
+    "....XsX...XX...XX...XX...XXX....",
+    "....XsX...XX..XssX..XX...XsX....",
+    ".....XsX..XsX.XssX.XsX..XsX.....",
+    ".....XsX..XsX.XssX.XsX..XsX.....",
+    ".....XhoXXssX.XssX.XhoXXssX.....",
+    "......XhhhoooXooooXooohssX......",
+    "......XhooooohoooohoooossX......",
+    "......XhooooooooooooooossX......",
+    ".......XhooooooooooooossX.......",
+    ".......XhooooooooooooossX.......",
+    ".......XhooooooooooooossX.......",
+    "........XhooooooooooossX........",
+    "........XddddddddddddddX........",
+    "........XXooooooooooosXX........",
+    "..........XhooooooossX..........",
+    ".........XhooooooooossX.........",
+    ".........XhooooooooossX.........",
+    "........XhooooooooooossX........",
+    "........XhooooooooooossX........",
+    "........XhooooooooooossX........",
+    "......XXddddddddddddddddXX......",
+    "......XhooooooooooooooossX......",
+    "......XssssssssssssssssssX......",
+    "......XXXXXXXXXXXXXXXXXXXX......",
+    "................................",
+    "................................"
+  ],
+  k: [
+    "...............XX...............",
+    "...............XX...............",
+    "............XXXooXXX............",
+    "............XXXooXXX............",
+    "...............XX...............",
+    "...............XX...............",
+    "...............XX...............",
+    ".............XXosXX.............",
+    ".........XXXXhhoohhXXXX.........",
+    ".......XXhhhhoooooohhhsXX.......",
+    "......XhhooooooddoooooossX......",
+    "......XhoooooooddoooooossX......",
+    ".....XhooooooooddooooooossX.....",
+    ".....XhooooooooddooooooossX.....",
+    ".....XhooooooooddooooooossX.....",
+    ".....XhooooooooddooooooossX.....",
+    "......XhoooooooddoooooossX......",
+    "......XsoooooooddoooooossX......",
+    ".......XhooooooooooooossX.......",
+    "........XddddddddddddddX........",
+    "........XXooooooooooosXX........",
+    "..........XhooooooossX..........",
+    ".........XhooooooooossX.........",
+    "........XhooooooooooossX........",
+    "........XhooooooooooossX........",
+    "........XhooooooooooossX........",
+    "......XXddddddddddddddddXX......",
+    "......XhooooooooooooooossX......",
+    "......XssssssssssssssssssX......",
+    "......XXXXXXXXXXXXXXXXXXXX......",
+    "................................",
+    "................................"
+  ],
+  n: [
+    "................................",
+    "................................",
+    "............X...................",
+    "...........XsX..................",
+    "...........XsX..................",
+    "..........XhooXXXXX.............",
+    "..........XhoohhhsdX............",
+    ".........XhoooooooodXX..........",
+    "........XhoooooooooodsX.........",
+    ".......XhoddooooooooodsX........",
+    "......XhooddooooooooosdX........",
+    "......XhoooooooooooooodsX.......",
+    ".....XhooooooosooooooosdX.......",
+    "....XhooooooosXoooooooodsX......",
+    "....XhooooossX.XhoooooodsX......",
+    "....XdooodssX..XhoooooosdX......",
+    "....XsoodssX..XhooooooosdX......",
+    ".....XsdssX...XhoooooooossX.....",
+    "......XXXX...XhooooooooossX.....",
+    "............XhoooooooooossX.....",
+    "............XhoooooooooossX.....",
+    "...........XhoooooooooossX......",
+    "...........XhoooooooooossX......",
+    "........XXXoooooooooooosXX......",
+    "........XhhoooooooooossX........",
+    "........XhooooooooooossX........",
+    "......XXddddddddddddddddXX......",
+    "......XhooooooooooooooossX......",
+    "......XssssssssssssssssssX......",
+    "......XXXXXXXXXXXXXXXXXXXX......",
+    "................................",
+    "................................"
+  ]
+};
+
+/* Colours of each pixel letter, for white and black pieces. */
+const PIECE_TONES = {
+  w: { X: '#18241b', h: '#ffffff', o: '#eaf3dc', s: '#b0cc9c', d: '#5f7d63' },
+  b: { X: '#050806', h: '#62846a', o: '#283a2e', s: '#151f19', d: '#7da485' },
+};
+
+(function injectPieceStyles() {
+  let css = '';
+  for (const colour of ['w', 'b']) {
+    for (const type in PIECES) {
+      const rows = PIECES[type], size = rows.length;
+      let rects = '';
+      for (let y = 0; y < size; y++) {
+        /* one rect per horizontal run of the same letter */
+        for (let x = 0; x < size;) {
+          const ch = rows[y][x];
+          let run = 1;
+          while (x + run < size && rows[y][x + run] === ch) run++;
+          if (ch !== '.') rects += '<rect x="' + x + '" y="' + y + '" width="' + run + '" height="1" fill="' + PIECE_TONES[colour][ch] + '"/>';
+          x += run;
+        }
+      }
+      const svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ' + size + ' ' + size + '" shape-rendering="crispEdges">' + rects + '</svg>';
+      css += '.pc.' + colour + type + '{background-image:url("data:image/svg+xml,' + encodeURIComponent(svg) + '")}';
+    }
+  }
+  const style = document.createElement('style');
+  style.textContent = css;
+  document.head.appendChild(style);
+})();

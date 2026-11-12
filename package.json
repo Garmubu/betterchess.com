@@ -1,0 +1,11 @@
+{
+  "name": "betterchess",
+  "version": "1.0.0",
+  "description": "A free chess trainer that runs entirely in the browser: games against Stockfish at your level, a live coach, openings and tactics.",
+  "private": true,
+  "license": "GPL-3.0-only",
+  "scripts": {
+    "build": "node build.js",
+    "test": "node test/run.js"
+  }
+}
